@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import './ImageGenerator.css'
 import default_image from '../Assets/default_image.png'
 
+
 export const ImageGenerator = () => {
 
     const[image_url, setImage_url] = useState("/");
@@ -17,7 +18,7 @@ export const ImageGenerator = () => {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",
-                    "Authorization": "Bearer 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",
+                    "Authorization": `Bearer ${process.env.REACT_APP_API_KEY}`,
                     "User-Agent":"Chrome"
                 },
                 body:JSON.stringify({
@@ -32,7 +33,7 @@ export const ImageGenerator = () => {
         let data_array = data.data;
         setImage_url(data_array[0].url);
     }
-    
+
 return (
     <div className='ai-image-generator'>
         <div className="header">Ai Image <span>generator</span></div>
